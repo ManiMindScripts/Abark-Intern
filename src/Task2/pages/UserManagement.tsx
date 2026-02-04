@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useOptimistic } from "react"
 import type { Users } from "../types/users"
 import { USERS } from "../data/users"
 import { User } from "../Component/User"
@@ -11,13 +11,19 @@ export function UserManagement() {
   const [search, setSearch] = useState("")
   const [open, setOpen] = useState(false)
 
-  const filteredUsers = users.filter((user) =>
+  const [optimisticUsers, addOptimisticUser] =
+    useOptimistic<Users[], Users>(
+      users,
+      (state, newUser) => [newUser, ...state]
+    )
+  const filteredUsers = optimisticUsers.filter((user) =>
     `${user.name} ${user.email}`
       .toLowerCase()
       .includes(search.toLowerCase())
   )
-  const handleAddUser = (newUser: Users) => {
-    setUsers((prev) => [newUser, ...prev])
+  const handleAddUser = (user: Users) => {
+    addOptimisticUser(user)
+    setUsers((prev) => [user, ...prev])
   }
 
   return (
@@ -35,11 +41,15 @@ export function UserManagement() {
       <SearchBar value={search} onChange={setSearch} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
+        {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => (
             <User key={user.id} user={user} />
           ))
-        }
+        ) : (
+          <p className="text-muted-foreground">
+            No users found
+          </p>
+        )}
         <AddUserModal
           open={open}
           onOpenChange={setOpen}
