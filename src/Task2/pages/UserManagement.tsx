@@ -3,10 +3,10 @@ import type { Users } from "../types/users"
 import { USERS } from "../data/users"
 import { User } from "../Component/User"
 import { SearchBar } from "../Component/SearchBar"
-import { AddUserModal } from "../Component/AddUserModal"
+import  AddUserModal  from "../Component/AddUserModal"
 import { Button } from "../../components/ui/button"
 
-export function UserManagement() {
+const UserManagement = () => {
   const [users, setUsers] = useState<Users[]>(USERS)
   const [search, setSearch] = useState("")
   const [open, setOpen] = useState(false)
@@ -59,3 +59,4 @@ export function UserManagement() {
     </div>
   )
 }
+export default UserManagement

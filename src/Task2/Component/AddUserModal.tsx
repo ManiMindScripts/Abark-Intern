@@ -1,6 +1,6 @@
 import { useState, useTransition } from "react";
 import type { Users } from "../types/users";
-import { Dialog,DialogContent,DialogHeader,DialogTitle,DialogFooter } from "../../components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input"
 import {
@@ -13,23 +13,20 @@ import {
 
 
 interface AddUserModalPropos {
-    open: boolean
-    onOpenChange: (open: boolean) => void
-    onAddUser: (users: Users) => void
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  onAddUser: (users: Users) => void
 }
-export function AddUserModal({
-    open,
-    onOpenChange,
-    onAddUser
-}: AddUserModalPropos) {
-    const [isPending, startTransition] = useTransition()
-    const [form, setForm] = useState<Omit<Users,"id">>({
-        name: "",
-        email: "",
-        role: "user",
-        status: "active",
-    })
-    
+const AddUserModal: React.FC<AddUserModalPropos> = (props) => {
+  const { open, onOpenChange, onAddUser } = props
+  const [isPending, startTransition] = useTransition()
+  const [form, setForm] = useState<Omit<Users, "id">>({
+    name: "",
+    email: "",
+    role: "user",
+    status: "active",
+  })
+
   const handleSubmit = () => {
     if (!form.name || !form.email) return
 
@@ -41,7 +38,7 @@ export function AddUserModal({
       onOpenChange(false)
     })
   }
-    return (
+  return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -114,3 +111,4 @@ export function AddUserModal({
     </Dialog>
   )
 }
+export default AddUserModal
