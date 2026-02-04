@@ -1,4 +1,4 @@
-import { Card } from "../ui/card"
+import { Card } from "../../components/ui/card"
 import {
   Mail,
   Phone,
@@ -6,7 +6,7 @@ import {
   UserCircle,
 } from "lucide-react"
 import { useState } from "react"
-import type { User } from "../../types/user"
+import type { User } from "../types/user"
 
 interface UserCardProps {
   user: User
@@ -26,7 +26,6 @@ export function UserCard({ user }: UserCardProps) {
 
   return (
     <Card className="w-72 rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-2xl">
-      {/* Avatar */}
       <div className="flex justify-center -mt-8 mb-4">
         <img
           src={user.picture}
@@ -35,15 +34,11 @@ export function UserCard({ user }: UserCardProps) {
         />
       </div>
 
-      {/* Name */}
+      
       <h2 className="text-lg font-bold">{user.fullName}</h2>
-
-      {/* Dynamic Info Area */}
-      <p className="mt-2 min-h-[20px] text-sm text-muted-foreground transition-all duration-300">
+      <p className="mt-2 min-h-[20px] text-md text-muted-foreground transition-all duration-300">
         {infoTextMap[activeInfo]}
       </p>
-
-      {/* Icon Actions */}
       <div className="mt-6 flex justify-center gap-6">
         <Mail
           className="w-5 h-5 cursor-pointer text-blue-500 hover:scale-110 transition"

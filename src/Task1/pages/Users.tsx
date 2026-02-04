@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import type {User } from "../types/user"
 import type { RandomUserApiResponse } from "../types/api"
-import { UserCard } from "../components/ui/UserCard"
+import { UserCard } from "../component/UserCard"
 
 export default function User() {
   const [users, setUsers] = useState<User[]>([])

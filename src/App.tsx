@@ -1,7 +1,7 @@
-import React from 'react'
 import './App.css'
-import User from './pages/Users'
-import Counter from './components/ui/Counter'
+// import User from './Task1/pages/Users'
+import { UserManagement } from "./Task2/pages/UserManagement"
+// import Counter from './components/ui/Counter'
 
 function App() {
   
@@ -9,9 +9,9 @@ function App() {
   return (
     <>
     {/* <Counter/> */}
-      <User/>
+      {/* <User/> */}
+      <UserManagement/>
     </>
   )
 }
-
 export default App
