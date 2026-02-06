@@ -1,6 +1,7 @@
 import './App.css'
 // import User from './Task1/pages/Users'
-import  UserManagement  from "./Task2/pages/UserManagement"
+// import  UserManagement  from "./Task2/pages/UserManagement"
+import { Home } from './Task3/pages/Home'
 // import Counter from './Task1/component/Counter'
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <>
     {/* <Counter/> */}
       {/* <User/> */}
-      <UserManagement/>
+      {/* <UserManagement/> */}
+      <Home/>
     </>
   )
 }
