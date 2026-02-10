@@ -15,7 +15,7 @@ export function AddEditProductPage() {
 
       <ProductForm
         editingProduct={productToEdit || null}
-        onFinishEdit={() => navigate("/products")}
+        onFinishEdit={() => navigate("/")}
       />
     </div>
   )
